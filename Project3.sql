@@ -1,5 +1,5 @@
  /************************************************************
-  Project 2
+  Project 3
   Date		   programmer        Note
   10/10/2019    Ashley Provolt	  creating 	information in tables
 *****************************************************************/
@@ -30,32 +30,46 @@ INSERT INTO [dbo].[status]
 		   (3, 'unavailable')
 GO
 
+--artist_type
+INSERT INTO [dbo].[artist_type]
+           ([artist_type_ID]
+           ,[artist_description])
+     VALUES
+           ( 1 ,'single artist')
+		   ,(2  ,'Group artists')
+GO
+
+
+
+
+
 --artist
 INSERT INTO [dbo].[artist]
-           ([artist_FName]
+           ([artist_type_ID]
+		   ,[artist_FName]
            ,[artist_LName])
      VALUES
-           ('Breaking Benjamon', NULL)
-		   ,('Diciple', NULL)
-		   ,('Taylor','Swift')
-		   ,('Demi', 'Lavato')
-		   ,('Phora', NULL)
-		   ,('NF', NULL)
-		   ,('Ed', 'Sheeran')
-		   ,('Maroon 5', Null)
-		   ,('Jacob', 'Lee')
-		   ,('G-Eazy', NULL)
-		   ,('Bazzi', NULL)
-		   ,('Demon Hunter', NULL)
-		   ,('Chris', 'Brown')
-		   ,('Five Finger Death Punch', NULL)
-		   ,('Lauren', 'Daigle')
-		   ,('Casting Crowns', NULL)
-		   ,('Crowder', NULL)
-		   ,('Jars Of Clay', NULL)
-		   ,('Thousand Foot Krutch', NULL)
-		   ,('Julia', 'Michaels')
-		   ,('Faouzia', Null)
+           (2, 'Breaking Benjamon', NULL)
+		   ,(2, 'Diciple', NULL)
+		   ,(1, 'Taylor','Swift')
+		   ,(1, 'Demi', 'Lavato')
+		   ,(1, 'Phora', NULL)
+		   ,(1, 'NF', NULL)
+		   ,(1, 'Ed', 'Sheeran')
+		   ,(2, 'Maroon 5', Null)
+		   ,(1, 'Jacob', 'Lee')
+		   ,(1, 'G-Eazy', NULL)
+		   ,(1, 'Bazzi', NULL)
+		   ,(2, 'Demon Hunter', NULL)
+		   ,(1, 'Chris', 'Brown')
+		   ,(2, 'Five Finger Death Punch', NULL)
+		   ,(1, 'Lauren', 'Daigle')
+		   ,(2, 'Casting Crowns', NULL)
+		   ,(1, 'Crowder', NULL)
+		   ,(2, 'Jars Of Clay', NULL)
+		   ,(2, 'Thousand Foot Krutch', NULL)
+		   ,(1, 'Julia', 'Michaels')
+		   ,(1, 'Faouzia', Null)
 GO
 
 --Borrower
@@ -94,42 +108,45 @@ GO
 --CD
 INSERT INTO [dbo].[CD]
            ([CD_Name]
+		   ,[release_Date]
            ,[genre_ID]
            ,[status_ID])
      VALUES
-           ('We are bit alone',1, 3)
-		   ,('Red',3, 1)
-		   ,('Yours truly forever',4, 2)
-		   ,('Extremist',2, 1)
-		   ,('Fearless',5, 2)
-		   ,('1989',3, 3)
-		   ,('Sincerely Yours',4, 1)
-		   ,('Dark before dawn',1, 2)
-		   ,('Outlive',2, 2)
-		   ,('Set It Off',1, 3)
-		   ,('Phenomenon',1, 2)
-		   ,('Confident',3, 1)
-		   ,('Love is hell',4, 3)
-		   ,('Dear Agony',1, 1)
-		   ,('Summer of Darkness',2, 2)
-		   ,('V',3, 2)
-		   ,('Percption',4, 2)
-		   ,('Overexposed',3, 1)
-		   ,('How can it be',3, 2)
-		   ,('Thrive',3, 1)
-		   ,('Philosophical sessions',3, 2)
+           ('We are bit alone', 06/29/2004, 1, 3)
+		   ,('Red', 10/22/2012, 3, 1)
+		   ,('Yours truly forever', 08/18/2017, 4, 2)
+		   ,('Extremist', 03/18/2014, 2, 1)
+		   ,('Fearless', 11/11/2008, 5, 2)
+		   ,('1989', 10/27/2014, 3, 3)
+		   ,('Sincerely Yours', 05/18/2014, 4, 1)
+		   ,('Dark before dawn', 06/23/2015, 1, 2)
+		   ,('Outlive', 03/31/2017, 2, 2)
+		   ,('Set It Off', 04/14/2000, 1, 3)
+		   ,('Phenomenon', 09/30/2003, 1, 2)
+		   ,('Confident', 10/16/2015, 3, 1)
+		   ,('Love is hell', 10/05/2018, 4, 3)
+		   ,('Dear Agony', 09/29/2009, 1, 1)
+		   ,('Summer of Darkness', 05/04/2004, 2, 2)
+		   ,('V', 08/29/2014, 3, 2)
+		   ,('Percption', 10/06/2017, 4, 2)
+		   ,('Overexposed', 06/20/2012, 3, 1)
+		   ,('How can it be', 04/14/2015, 3, 2)
+		   ,('Thrive', 01/28/2014, 3, 1)
+		   ,('Philosophical sessions', 01/11/2019, 3, 2)
 GO
 
 INSERT INTO [dbo].[CD]
            ([CD_Name]
+		   ,[release_Date]
            ,[genre_ID]
            ,[status_ID])
      VALUES
-           ('Red Pill Blues',3,1)
+           ('Red Pill Blues', 11/3/2017, 3,1)
 GO
 --update CD
 UPDATE [dbo].[CD]
-   SET [CD_Name] = 'Therapy Session'
+   SET [CD_Name] = 'Therapy Session' ,
+	[release_Date] = 4/22/2016
 	WHERE 	CD_ID = 13;
 GO
 
@@ -168,6 +185,8 @@ INSERT INTO [dbo].[CD_artist]
 
 GO
 
+
+
 --borrower_CD
 INSERT INTO [dbo].[borrower_CD]
            ([borrower_ID]
@@ -176,25 +195,25 @@ INSERT INTO [dbo].[borrower_CD]
            ,[returned_date])
      VALUES
            (10, 16, 11/16/2018, 12/29/2018)
-		   ,(14, 5, 10/14/2018, 1/18/2019)
+		   ,(14, 5, 10/14/2018, 01/18/2019)
 		   ,(11, 1, 10/22/2018, 12/15/2018)
 		   ,(18, 9, 12/14/2018, NULL)
-		   ,(9, 18, 01/01/2019, 3/03/2019)
-		   ,(17, 19, 02/14/2019, 5/25/2019)
-		   ,(9, 6, 03/08/2019, 6/01/2019)
+		   ,(9, 18, 01/01/2019, 03/03/2019)
+		   ,(17, 19, 02/14/2019, 05/25/2019)
+		   ,(9, 6, 03/08/2019, 06/01/2019)
 		   ,(10, 18, 11/02/2019, NULL)
 		   ,(4, 15, 3/10/2019, 10/08/2019)
 		   ,(12, 5, 07/14/2019, 10/15/2019)
 		   ,(1, 15, 09/01/2019, NULL)
 		   ,(1, 5, 10/01/2019, NULL)
 		   ,(3, 12, 09/10/2018, NULL)
-		   ,(16, 13, 8/20/2019, NULL)
-		   ,(2, 11, 5/17/2019, NULL)
-		   ,(15, 17, 8/16/2019, NULL)
-		   ,(10, 9, 6/22/2019, NULL)
-		   ,(14, 21, 7/04/2019, NULL)
-		   ,(5, 19, 9/25/2019, NULL)
-		   ,(6, 8, 9/12/2019, 10/10/2019)
+		   ,(16, 13, 08/20/2019, NULL)
+		   ,(2, 11, 05/17/2019, NULL)
+		   ,(15, 17, 08/16/2019, NULL)
+		   ,(10, 9, 06/22/2019, NULL)
+		   ,(14, 21, 07/04/2019, NULL)
+		   ,(5, 19, 09/25/2019, NULL)
+		   ,(6, 8, 09/12/2019, 10/10/2019)
 GO
 
 --borrower
